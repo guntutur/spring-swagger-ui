@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import com.demo.springswagger.contract.service.TutorialService;
 import com.demo.springswagger.mapper.request.TutorialRequest;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@ApiOperation(
-        value = "the purpose of this service is to..",
-        notes = "on some occassion this api might behave like..",
-        produces = "application/json"
+@Api(
+        produces = "application/json",
+        value = "This api operates as..."
 )
 @RestController
 @RequestMapping("/tutorial")
@@ -38,10 +38,13 @@ public class TutorialController {
         this.tutorialService = tutorialService;
     }
 
+    @ApiOperation(
+            value = "getAllTutorials",
+            httpMethod = "GET"
+    )
     @ApiImplicitParam(
             name = "title",
             value = "title is optional"
-
     )
     @GetMapping
     public ResponseEntity<List<TutorialRequest>> getAllTutorials(@RequestParam(required = false) String title) {
@@ -74,6 +77,14 @@ public class TutorialController {
         }
     }
 
+    @ApiOperation(
+            value = "createTutorial",
+            httpMethod = "POST"
+    )
+    @ApiImplicitParam(
+            name = "tutorial",
+            value = "tutorial is mandatory"
+    )
     @PostMapping
     public ResponseEntity<TutorialRequest> createTutorial(@RequestBody TutorialRequest tutorial) {
         try {

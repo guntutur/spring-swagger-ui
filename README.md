@@ -15,3 +15,6 @@ or from fat jar created (the jar is not yet exists until you build it)
 ```
 java -jar target/spring-swagger-0.0.1-SNAPSHOT.jar
 ```
+
+## resources
+- [springfox docs](http://springfox.github.io/springfox/docs/current/)
