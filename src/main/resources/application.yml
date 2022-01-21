@@ -1,0 +1,10 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /api
+
+spring:
+  data:
+    mongodb:
+      database: demo
+      port: 27017
